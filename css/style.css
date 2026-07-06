@@ -20,9 +20,8 @@ section{
 }
 
 #hero{
-    height:300vh;
-    background:url("../assets/banner.png") center top/cover no-repeat;
-    position:relative;
+    height:100vh;
+    background:red;
 }
 
 .overlay{
