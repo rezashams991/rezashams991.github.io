@@ -1,133 +1,75 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TEST</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
+    <title>rezashams991</title>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Segoe UI,Tahoma,sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#0d1117;
-    color:white;
-}
-
-.hero{
-    height:100vh;
-    background:url("banner.png") center center/cover no-repeat;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-}
-
-.hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.35);
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    text-align:center;
-}
-
-.hero h1{
-    font-size:4rem;
-    margin-bottom:15px;
-}
-
-.hero p{
-    font-size:1.3rem;
-    opacity:.8;
-}
-
-.scroll{
-    position:absolute;
-    bottom:35px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:3;
-    font-size:1rem;
-    animation:updown 1.6s infinite;
-}
-
-@keyframes updown{
-
-0%{transform:translate(-50%,0);}
-50%{transform:translate(-50%,10px);}
-100%{transform:translate(-50%,0);}
-
-}
-
-section{
-
-padding:100px 10%;
-background:#0d1117;
-
-}
-
-.card{
-
-background:#161b22;
-padding:40px;
-border-radius:15px;
-
-}
-
-</style>
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-<div class="hero">
+    <!-- Hero -->
+    <header id="hero">
 
-<div class="hero-content">
+        <div class="overlay">
 
-<h1>Welcome</h1>
+            <h1 id="welcome">Welcome</h1>
 
-<p>Scroll to Explore</p>
+            <p id="subtitle">Scroll Down</p>
 
-</div>
+        </div>
 
-<div class="scroll">
+    </header>
 
-↓
+    <!-- About -->
+    <section id="about">
 
-</div>
+        <h2>About Me</h2>
 
-</div>
+    </section>
 
-<section>
+    <!-- Gaming -->
+    <section id="gaming">
 
-<div class="card">
+        <h2>Gaming</h2>
 
-<h2>About Me</h2>
+    </section>
 
-<br>
+    <!-- Social -->
+    <section id="social">
 
-<p>
-اینجا بعداً اطلاعات، عکس گیت‌هاب و بقیه کارت‌ها قرار می‌گیرند.
-</p>
+        <h2>Social</h2>
 
-</div>
+    </section>
 
-</section>
+    <!-- GitHub -->
+    <section id="github">
+
+        <h2>GitHub</h2>
+
+    </section>
+
+    <!-- Recent Projects -->
+    <section id="recent-projects">
+
+        <h2>Recent Projects</h2>
+
+    </section>
+
+    <footer>
+
+        <p>© 2026</p>
+
+    </footer>
+
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>
