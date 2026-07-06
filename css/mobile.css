@@ -1,0 +1,162 @@
+@media (max-width: 900px) {
+    #main-container, #sidebar {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    #main-container {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: -60px 0 0 0 !important; 
+        padding: 20px 15px !important;
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: rgba(15, 23, 42, 0.95) !important;
+    }
+
+    #content {
+        width: 100% !important;
+        gap: 30px !important;
+    }
+
+    .card-wrapper {
+        display: block !important;
+        position: relative !important;
+        width: calc(100% - 15px) !important;
+        margin-left: 15px !important; 
+    }
+
+
+    .section-card {
+        width: 100% !important;
+        padding: 30px 20px !important;
+        min-height: auto !important;
+        border-radius: 20px !important;
+    }
+
+  
+    .card-wrapper .section-card {
+        padding-left: 75px !important;
+    }
+
+
+    .card-image-placeholder {
+        display: block !important;
+        position: absolute !important;
+        left: -20px !important; 
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 90px !important;  
+        height: 90px !important;
+        z-index: 10 !important;
+        pointer-events: none !important;
+    }
+
+    .card-image-placeholder:empty {
+        display: none !important;
+    }
+
+    .card-wrapper:has(.card-image-placeholder:empty) .section-card {
+        padding-left: 20px !important;
+    }
+
+    .card-image-placeholder img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) !important;
+    }
+
+    #profile-image {
+        position: fixed !important;
+        top: 15px !important;
+        left: 15px !important;
+        width: 65px !important;
+        height: 65px !important;
+        z-index: 1400 !important;
+        transform: none !important; 
+        margin: 0 !important;
+        border: 3px solid #6fb7ff !important;
+        box-shadow: 0 0 12px rgba(111,183,255,.4) !important;
+    }
+
+    #mobile-menu-btn {
+        display: flex !important;
+        position: fixed !important;
+        top: 95px !important; 
+        left: 15px !important;
+        width: 45px !important;
+        height: 45px !important;
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        color: white !important;
+        border-radius: 10px !important;
+        font-size: 22px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        z-index: 1400 !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+    }
+
+    #sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        left: -280px !important; 
+        width: 260px !important;
+        height: 100vh !important;
+        background: #0D1117 !important;
+        border: none !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 0 !important;
+        padding: 160px 20px 20px 20px !important; 
+        transition: left 0.3s ease-in-out !important;
+        z-index: 1300 !important;
+        box-shadow: 5px 0 25px rgba(0,0,0,0.5) !important;
+    }
+
+    #sidebar.open {
+        left: 0 !important;
+    }
+
+    #sidebar-menu {
+        margin-top: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    #sidebar a {
+        font-size: 1.1rem !important;
+        padding: 12px 10px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        margin-bottom: 0 !important;
+    }
+
+    #mobile-overlay {
+        position: fixed !important;
+        inset: 0 !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: opacity 0.3s ease, visibility 0.3s ease !important;
+        z-index: 1250 !important;
+    }
+
+    #mobile-overlay.show {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .gaming-widgets {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    .gaming-widgets a {
+        width: 100% !important;
+    }
+}

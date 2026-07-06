@@ -416,6 +416,12 @@ h2{
 
 }
 
+#mobile-menu-btn{
+
+    display:none;
+
+}
+
 @media (max-width:900px){
 
 #profile-image{

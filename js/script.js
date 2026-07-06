@@ -114,3 +114,28 @@ document.querySelectorAll(".section-card").forEach(card=>{
 
 });
 
+const menu=document.getElementById("mobile-menu-btn");
+
+const sidebar=document.getElementById("sidebar");
+
+const overlay=document.getElementById("mobile-overlay");
+
+menu.onclick=()=>{
+
+    sidebar.classList.toggle("open");
+
+    overlay.classList.toggle("show");
+
+    menu.innerHTML=sidebar.classList.contains("open")?"✕":"☰";
+
+};
+
+overlay.onclick=()=>{
+
+    sidebar.classList.remove("open");
+
+    overlay.classList.remove("show");
+
+    menu.innerHTML="☰";
+
+};
