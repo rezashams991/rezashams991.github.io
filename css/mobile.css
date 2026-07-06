@@ -1,4 +1,5 @@
 @media (max-width: 900px) {
+    
     #main-container, #sidebar {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
