@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Portfolio</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Tahoma,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0d1117;
+    color:white;
+}
+
+.hero{
+    height:100vh;
+    background:url("banner.png") center center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.35);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:1.3rem;
+    opacity:.8;
+}
+
+.scroll{
+    position:absolute;
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:3;
+    font-size:1rem;
+    animation:updown 1.6s infinite;
+}
+
+@keyframes updown{
+
+0%{transform:translate(-50%,0);}
+50%{transform:translate(-50%,10px);}
+100%{transform:translate(-50%,0);}
+
+}
+
+section{
+
+padding:100px 10%;
+background:#0d1117;
+
+}
+
+.card{
+
+background:#161b22;
+padding:40px;
+border-radius:15px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+
+<div class="hero-content">
+
+<h1>Welcome</h1>
+
+<p>Scroll to Explore</p>
+
+</div>
+
+<div class="scroll">
+
+↓
+
+</div>
+
+</div>
+
+<section>
+
+<div class="card">
+
+<h2>About Me</h2>
+
+<br>
+
+<p>
+اینجا بعداً اطلاعات، عکس گیت‌هاب و بقیه کارت‌ها قرار می‌گیرند.
+</p>
+
+</div>
+
+</section>
+
+</body>
+</html>
