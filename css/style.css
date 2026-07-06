@@ -1,0 +1,48 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0D1117;
+    color:white;
+    font-family:Segoe UI,sans-serif;
+}
+
+section{
+    min-height:100vh;
+    padding:80px;
+}
+
+#hero{
+    height:300vh;
+    background:url("../assets/banner.png") center top/cover no-repeat;
+    position:relative;
+}
+
+.overlay{
+    position:sticky;
+    top:0;
+    height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.2);
+}
+
+#welcome{
+    font-size:5rem;
+}
+
+#subtitle{
+    margin-top:20px;
+    opacity:.8;
+}
