@@ -1,141 +1,95 @@
-const hero = document.getElementById("hero");
+// ===== Banner Parallax =====
+const banner = document.getElementById("banner");
+const bannerImage = document.getElementById("banner-image");
+const welcomeText = document.getElementById("welcome-text");
+const scrollHint = document.getElementById("scroll-hint");
 
-const image = document.getElementById("hero-image");
+window.addEventListener("scroll", () => {
+    const bannerScroll = banner.offsetHeight - window.innerHeight;
+    const progress = Math.min(window.scrollY / bannerScroll, 1);
 
-const welcome = document.getElementById("welcome");
-
-const subtitle = document.getElementById("subtitle");
-
-window.addEventListener("scroll",()=>{
-
-    const heroScroll = hero.offsetHeight - window.innerHeight;
-
-    const progress = Math.min(window.scrollY / heroScroll ,1);
-
-
-    welcome.style.opacity = 1-progress;
-
-    subtitle.style.opacity = 1-progress;
-
-
-    image.style.backgroundPosition = `center ${progress*100}%`;
-
+    if (progress < 1) {
+        const fade = Math.exp(-progress * 4);
+        welcomeText.style.opacity = fade;
+        scrollHint.style.opacity = fade;
+        bannerImage.style.backgroundPosition = `center ${progress * 100}%`;
+    } else {
+        welcomeText.style.opacity = 0;
+        scrollHint.style.opacity = 0;
+        bannerImage.style.backgroundPosition = "center 100%";
+    }
 });
 
-
-const profileImage = document.getElementById("profile-image");
-
-const avatars = {
-
-    "about-card":{
-
-        src:"https://avatars.githubusercontent.com/rezashams991",
-
-        border:"#6fb7ff"
-
-    },
-
-    "gaming-card":{
-
-        src:"https://avatars.githubusercontent.com/rezashams991",
-
-        border:"#4CAF50"
-
-    },
-
-    "social-card":{
-
-        src:"https://avatars.githubusercontent.com/rezashams991",
-
-        border:"#5865F2"
-
-    },
-
-    "github-card":{
-
-        src:"https://avatars.githubusercontent.com/rezashams991",
-
-        border:"#ffffff"
-
-    },
-
-    "projects-card":{
-
-        src:"https://avatars.githubusercontent.com/rezashams991",
-
-        border:"#ffb347"
-
-    }
-
+// ===== Profile Avatar Border Update (based on scroll) =====
+const profileAvatar = document.getElementById("profile-avatar");
+const borderMap = {
+    "about-card": "#6fb7ff",
+    "gaming-card": "#4CAF50",
+    "social-card": "#5865F2",
+    "github-card": "#ffffff",
+    "projects-card": "#ffb347"
 };
 
+const cards = document.querySelectorAll(".card");
+let activeSection = null;
 
-const observer = new IntersectionObserver(entries=>{
+function updateBorder() {
+    let currentId = null;
+    const viewportTop = window.scrollY;
 
-    entries.forEach(entry=>{
+    cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardTop = rect.top + window.scrollY;
+        const cardBottom = rect.bottom + window.scrollY;
 
-        if(!entry.isIntersecting) return;
-
-        const data = avatars[entry.target.id];
-
-        if(!data) return;
-
-        if (profileImage.src.endsWith(data.src.split("/").pop())) return;
-        profileImage.style.opacity="0";
-
-        profileImage.style.transform="translateX(-50%) scale(.92)";
-
-        setTimeout(()=>{
-
-            profileImage.src=data.src;
-
-            profileImage.style.borderColor = data.border;
-
-            profileImage.style.boxShadow = `0 0 18px ${data.border}`;
-
-            profileImage.style.borderColor=data.border;
-
-            profileImage.style.opacity="1";
-
-            profileImage.style.transform="translateX(-50%) scale(1)";
-
-        },180);
-
+        if (cardTop <= viewportTop + 100 && cardBottom > viewportTop + 100) {
+            currentId = card.id;
+        }
     });
 
-},{
-    threshold:.55
-});
+    // Fallback to last card if none matches (bottom of page)
+    if (!currentId && cards.length > 0) {
+        const lastCard = cards[cards.length - 1];
+        const rect = lastCard.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+            currentId = lastCard.id;
+        }
+    }
 
+    if (currentId && currentId !== activeSection) {
+        const color = borderMap[currentId];
+        if (color) {
+            activeSection = currentId;
+            profileAvatar.style.borderColor = color;
+            profileAvatar.style.boxShadow = `0 0 18px ${color}`;
+        }
+    }
+}
 
-document.querySelectorAll(".section-card").forEach(card=>{
+// Set initial border (About card)
+if (cards.length > 0 && borderMap[cards[0].id]) {
+    const color = borderMap[cards[0].id];
+    activeSection = cards[0].id;
+    profileAvatar.style.borderColor = color;
+    profileAvatar.style.boxShadow = `0 0 18px ${color}`;
+}
 
-    observer.observe(card);
+window.addEventListener("scroll", updateBorder);
+window.addEventListener("resize", updateBorder);
 
-});
+// ===== Mobile Menu Toggle =====
+const menuBtn = document.getElementById("mobile-menu-btn");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("mobile-overlay");
 
-const menu=document.getElementById("mobile-menu-btn");
-
-const sidebar=document.getElementById("sidebar");
-
-const overlay=document.getElementById("mobile-overlay");
-
-menu.onclick=()=>{
-
+menuBtn.onclick = () => {
     sidebar.classList.toggle("open");
-
     overlay.classList.toggle("show");
-
-    menu.innerHTML=sidebar.classList.contains("open")?"✕":"☰";
-
+    menuBtn.innerHTML = sidebar.classList.contains("open") ? "✕" : "☰";
 };
 
-overlay.onclick=()=>{
-
+overlay.onclick = () => {
     sidebar.classList.remove("open");
-
     overlay.classList.remove("show");
-
-    menu.innerHTML="☰";
-
+    menuBtn.innerHTML = "☰";
 };

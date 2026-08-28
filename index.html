@@ -1,220 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="css/style.css">
-    <title>rezashams991</title>
     <link rel="stylesheet" href="css/mobile.css">
-
-
+    <title>rezashams991</title>
 </head>
 
 <body>
 
-    <!-- Hero -->
-    <header id="hero">
+    <!-- ===== Banner Section ===== -->
+    <header id="banner">
+        <div id="banner-image"></div>
+        <div id="banner-overlay">
+            <h1 id="welcome-text">Welcome</h1>
+            <p id="scroll-hint">Scroll to Explore</p>
+        </div>
+    </header>
 
-    <div id="hero-image"></div>
+    <!-- ===== Main Content ===== -->
+    <main id="main-container">
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <img id="profile-avatar" src="https://avatars.githubusercontent.com/rezashams991" alt="Profile">
+            <button id="mobile-menu-btn">☰</button>
+            <nav id="sidebar-menu">
+                <a href="#about-card">About</a>
+                <a href="#gaming-card">Gaming</a>
+                <a href="#social-card">Social</a>
+                <a href="#github-card">GitHub</a>
+                <a href="#projects-card">Projects</a>
+            </nav>
+        </aside>
 
-    <div id="hero-overlay">
-
-        <h1 id="welcome">Welcome</h1>
-
-        <p id="subtitle">Scroll to Explore</p>
-
-    </div>
-
-</header>
-
-<main id="main-container">
-
-    <aside id="sidebar">
-
-        <img id="profile-image"
-          src="https://avatars.githubusercontent.com/rezashams991"
-          alt="Profile">
-        <button id="mobile-menu-btn">
-
-            ☰
-
-        </button>
-        <nav id="sidebar-menu">
-
-         <a href="#about-card">About</a>
-         <a href="#gaming-card">Gaming</a>
-         <a href="#social-card">Social</a>
-         <a href="#github-card">GitHub</a>
-         <a href="#projects-card">Projects</a>
-
-        </nav>
-
-    </aside>
-
-    <div id="content">
-
-        <section id="about-card" class="section-card pattern-about">
-
-            <div class="card-image-placeholder"></div>
-
-            <div class="card-content">
-
-                <h2>About Me</h2>
-
-                <p>
-                   I started my B.Sc. in Electrical Engineering in 2025, driven by a deep curiosity about the intersection of Electronics, Telecommunications, and Software Engineering. My primary interest lies in understanding how hardware and software interact, from low-level electronic circuits and communication systems to high-level applications that process information and solve real-world problems.
-
-                    Programming has become one of my strongest passions. My journey began with C++, where I developed a solid understanding of Object-Oriented Programming (OOP), software architecture, and writing clean, maintainable, and reusable code. Through personal projects and continuous experimentation, I have strengthened my problem-solving skills while learning how to design software that is both efficient and scalable.
-
-                    Alongside C++, I also work with Python, using it to build practical applications and explore its extensive ecosystem of libraries. I enjoy learning by creating real projects and experimenting with different approaches rather than relying solely on theoretical study.
-
-                    As an Electrical Engineering student, I am fascinated by embedded systems, digital electronics, communication technologies, and the principles behind modern telecommunication networks. I occasionally explore topics related to networking and signal processing to better understand how today's communication infrastructure operates.
-
-                    I also have a growing interest in web development and enjoy designing clean, responsive, and user-friendly interfaces. Building personal websites and combining modern web technologies with thoughtful design has become another area that I genuinely enjoy exploring.
-
-                    Outside of engineering, gaming has always been one of my favorite hobbies. Beyond simply playing games, I am interested in understanding how they are built. I enjoy experimenting with game development concepts, especially those inspired by retro and classic games, whose creativity, technical limitations, and timeless gameplay continue to inspire me. Exploring game logic, graphics programming, and software architecture through small game-related projects is something I find both challenging and rewarding.
-
-                    I believe that the best way to learn is by building, experimenting, and continuously improving. Whether I am developing software, designing electronic systems, exploring communication technologies, creating websites, or working on personal side projects, I enjoy turning ideas into practical solutions while constantly expanding my knowledge.
-
-                    This website serves as a collection of my projects, experiments, and learning journey. It reflects not only what I have built so far but also my curiosity, passion for technology, and commitment to continuous growth as an engineer and developer.
-
-                </p>
-
-                
-            </div>
-
-        </section>
-
-        <div class="card-wrapper">
-
-            <div class="card-image-placeholder">
-             <img src="assets/gaming-card.png" alt="Gaming">
-            </div>
-
-            <section id="gaming-card" class="section-card pattern-gaming">
-
+        <!-- Content Cards -->
+        <div id="content">
+            <!-- About -->
+            <section id="about-card" class="card pattern-about">
+                <div class="card-image-placeholder"></div>
                 <div class="card-content">
-
-                    <h2>Gaming</h2>
-
+                    <h2>About Me</h2>
                     <p>
-                        Gaming has always been more than just entertainment for me—it's one of the experiences that sparked my interest in computers, software, and interactive technologies. I enjoy exploring games across multiple platforms, with a particular appreciation for retro and classic titles whose creativity, gameplay mechanics, and technical limitations continue to inspire me.
-
-                        I like experiencing a wide variety of genres, from story-driven adventures to challenging action games, while also paying attention to level design, game mechanics, optimization, and the technical decisions behind every project. As someone interested in software development and game design, I often find myself analyzing how games are built rather than simply playing them.
-
-                        Achievement hunting is another aspect of gaming that I genuinely enjoy. It encourages me to fully explore each game, discover hidden content, and experience everything developers intended players to find.
-
-                        Below you'll find my live gaming statistics, achievements, and recent activity, automatically synchronized from my gaming profiles across different platforms.
-                        
+                        I started my B.Sc. in Electrical Engineering in 2025, driven by a deep curiosity about the intersection of Electronics, Telecommunications, and Software Engineering. My primary interest lies in understanding how hardware and software interact, from low-level electronic circuits and communication systems to high-level applications that process information and solve real-world problems.
+                        Programming has become one of my strongest passions. My journey began with C++, where I developed a solid understanding of Object-Oriented Programming (OOP), software architecture, and writing clean, maintainable, and reusable code. Through personal projects and continuous experimentation, I have strengthened my problem-solving skills while learning how to design software that is both efficient and scalable.
+                        Alongside C++, I also work with Python, using it to build practical applications and explore its extensive ecosystem of libraries. I enjoy learning by creating real projects and experimenting with different approaches rather than relying solely on theoretical study.
+                        As an Electrical Engineering student, I am fascinated by embedded systems, digital electronics, communication technologies, and the principles behind modern telecommunication networks. I occasionally explore topics related to networking and signal processing to better understand how today's communication infrastructure operates.
+                        I also have a growing interest in web development and enjoy designing clean, responsive, and user-friendly interfaces. Building personal websites and combining modern web technologies with thoughtful design has become another area that I genuinely enjoy exploring.
+                        Outside of engineering, gaming has always been one of my favorite hobbies. Beyond simply playing games, I am interested in understanding how they are built. I enjoy experimenting with game development concepts, especially those inspired by retro and classic games, whose creativity, technical limitations, and timeless gameplay continue to inspire me. Exploring game logic, graphics programming, and software architecture through small game-related projects is something I find both challenging and rewarding.
+                        I believe that the best way to learn is by building, experimenting, and continuously improving. Whether I am developing software, designing electronic systems, exploring communication technologies, creating websites, or working on personal side projects, I enjoy turning ideas into practical solutions while constantly expanding my knowledge.
+                        This website serves as a collection of my projects, experiments, and learning journey. It reflects not only what I have built so far but also my curiosity, passion for technology, and commitment to continuous growth as an engineer and developer.
                     </p>
-                    
                 </div>
-                <div class="gaming-widgets">
-
-                    <a href="https://www.exophase.com/user/rezashams991/" target="_blank">
-
-                        <img
-                            src="https://card.exophase.com/2/0/314765.png?1783331200"
-                            alt="Exophase Profile">
-
-                    </a>
-
-                    <a href="https://www.trueachievements.com/gamer/rezashams991" target="_blank">
-
-                        <img
-                            src="https://www.trueachievements.com/gamercards/rezashams991.png""
-                            alt="TrueAchievements Profile">
-
-                    </a>
-
-                </div>
-            
             </section>
 
-        </div>
 
-        <section id="social-card" class="section-card pattern-social">
-
-            <div class="card-image-placeholder"></div>
-
-            <div class="card-content">
-
-                <h2>Social</h2>
-                <p>
-                    I always enjoy connecting with creative people, exchanging ideas, and discussing new technologies, projects, and interesting challenges. If you'd like to collaborate, share an idea, or simply have a conversation, I'd be happy to hear from you.
-                    Feel free to connect with me on LinkedIn.
-                </p>
-                
-                <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="rezashams991" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://ir.linkedin.com/in/rezashams991?trk=profile-badge">Mohamad Reza S.</a></div>
-              
-            </div>
-            
-
-        </section>
-
-        <section id="github-card" class="section-card pattern-github">
-
-            <div class="card-image-placeholder"></div>
-
-            <div class="card-content">
-
-                <h2>GitHub</h2>
-                <p>
-                created my GitHub account in 2021, long before I had a solid understanding of software development. At first, it was simply a place to explore and learn from the incredible open-source community. Today, GitHub has become one of my favorite platforms for discovering innovative projects that solve real-world problems in simple, creative, and completely open ways.
-                Whenever I can, I enjoy contributing to other repositories by reporting issues, helping debug problems, or suggesting improvements. Alongside that, I maintain my own projects, documenting my progress and continuously refining my code before publishing them.
-                Below you'll find my GitHub profile, repositories, and recent activity.
-
-                    <p class="github-link">
-                    Curious about my projects, experiments, and open-source contributions?
-                    <a href="https://github.com/rezashams991" target="_blank">
-                    Visit my GitHub profile.
-                    </a>
+            <!-- Gaming -->
+            <section id="gaming-card" class="card pattern-gaming">
+                <div class="card-image-placeholder">
+                    <img src="assets/avatar.png" alt="Gaming">
+                </div>
+                <div class="card-content">
+                    <h2>Gaming</h2>
+                    <p>
+                        Gaming has always been more than just entertainment for me—it's one of the experiences that sparked my interest in computers, software, and interactive technologies. I enjoy exploring games across multiple platforms, with a particular appreciation for retro and classic titles whose creativity, gameplay mechanics, and technical limitations continue to inspire me.
+                        I like experiencing a wide variety of genres, from story-driven adventures to challenging action games, while also paying attention to level design, game mechanics, optimization, and the technical decisions behind every project. As someone interested in software development and game design, I often find myself analyzing how games are built rather than simply playing them.
+                        Achievement hunting is another aspect of gaming that I genuinely enjoy. It encourages me to fully explore each game, discover hidden content, and experience everything developers intended players to find.
+                        Below you'll find my live gaming statistics, achievements, and recent activity, automatically synchronized from my gaming profiles across different platforms.
                     </p>
-                </p>
-                
-            </div>
-            <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=rezashams991&theme=dark" />
-        </section>
+                </div>
 
-        <section id="projects-card" class="section-card pattern-projects">
-
-            <div class="card-image-placeholder"></div>
-
-            <div class="card-content">
-
-                <h2>Recent Projects</h2>
-                <p>
-                    OpenAppointments is a desktop appointment and scheduling application that I have been actively developing in Python. The project is built with a fully graphical user interface and follows a modular Object-Oriented Programming (OOP) architecture, making the codebase clean, maintainable, and easy to extend.
-                    The application supports multiple languages, light and dark themes, batch operations, and importing or exporting data in various file formats. It also includes folder-based organization, an archive system for completed records, and the ability to generate printable appointment cards, making it suitable for managing appointments in an organized and efficient way.
-                    This project serves as both a practical scheduling solution and an opportunity to apply software engineering principles such as modular design, reusable components, and scalable architecture. Once development is complete, the project will be released as open source on my GitHub profile.
-
-                </p>
-                <a href="https://github.com/rezashams991/OpenAppointments">
-                    <img src="https://gh-card.dev/repos/rezashams991/OpenAppointments.svg" alt="GitHub Repo Card">
+                <!-- Exophase Widget -->
+                <a href="https://www.exophase.com/user/rezashams991/" target="_blank" class="exophase-card-link">
+                    <img src="https://card.exophase.com/2/0/314765.png?1783331200" alt="Exophase Profile">
                 </a>
 
-            </div>
+                <!-- Platform Links -->
+                <p class="card-link">
+                    <a href="https://www.xbox.com/en-US/play/user/rezashams991" target="_blank" style="color:#1fd419;">Xbox Profile →</a>
+                </p>
+                <p class="card-link">
+                    <a href="https://steamcommunity.com/id/rezashams991/" target="_blank" style="color:#418bd6;">Steam Profile →</a>
+                </p>
+            </section>
 
-        </section>
+            <!-- Social -->
+            <section id="social-card" class="card pattern-social">
+                <div class="card-image-placeholder"></div>
+                <div class="card-content">
+                    <h2>Social</h2>
+                    <p>
+                        I always enjoy connecting with creative people, exchanging ideas, and discussing new technologies, projects, and interesting challenges. If you'd like to collaborate, share an idea, or simply have a conversation, I'd be happy to hear from you.<br>
+                        Feel free to connect with me on LinkedIn.
+                    </p>
+                    <a href="https://ir.linkedin.com/in/rezashams991" target="_blank" class="btn-linkedin">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </section>
 
-    </div>
+            <!-- GitHub -->
+            <section id="github-card" class="card pattern-github">
+                <div class="card-image-placeholder"></div>
+                <div class="card-content">
+                    <h2>GitHub</h2>
+                    <p>
+                        I created my GitHub account in 2021, long before I had a solid understanding of software development. At first, it was simply a place to explore and learn from the incredible open-source community. Today, GitHub has become one of my favorite platforms for discovering innovative projects that solve real-world problems in simple, creative, and completely open ways.<br><br>
+                        Whenever I can, I enjoy contributing to other repositories by reporting issues, helping debug problems, or suggesting improvements. Alongside that, I maintain my own projects, documenting my progress and continuously refining my code before publishing them.<br><br>
+                        Below you'll find my GitHub profile, repositories, and recent activity.
+                    </p>
+                    <a href="https://github.com/rezashams991" target="_blank" class="github-card-link">
+                        <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=rezashams991&theme=dark" alt="GitHub Profile Summary">
+                    </a>
+                    <p class="card-link">
+                        <a href="https://github.com/rezashams991" target="_blank" style="color:#ffffff" >Visit my GitHub profile →</a>
+                    </p>
+                </div>
+            </section>
 
-</main>
+            <!-- Projects -->
+            <section id="projects-card" class="card pattern-projects">
+                <div class="card-image-placeholder"></div>
+                <div class="card-content">
+                    <h2>Recent Projects</h2>
+                    <p>
+                        OpenAppointments is a desktop appointment and scheduling application that I have been actively developing in Python. The project is built with a fully graphical user interface and follows a modular Object-Oriented Programming (OOP) architecture, making the codebase clean, maintainable, and easy to extend.<br><br>
+                        The application supports multiple languages, light and dark themes, batch operations, and importing or exporting data in various file formats. It also includes folder-based organization, an archive system for completed records, and the ability to generate printable appointment cards, making it suitable for managing appointments in an organized and efficient way.<br><br>
+                        This project serves as both a practical scheduling solution and an opportunity to apply software engineering principles such as modular design, reusable components, and scalable architecture. Once development is complete, the project will be released as open source on my GitHub profile.
+                    </p>
+                    <a href="https://github.com/rezashams991/OpenAppointments" target="_blank" class="projects-card-link">
+                        <img src="https://gh-card.dev/repos/rezashams991/OpenAppointments.svg" alt="OpenAppointments Repository">
+                    </a>
+                    <p class="card-link">
+                        <a href="https://github.com/rezashams991/OpenAppointments" target="_blank" style="color:#ffb347;">View project on GitHub →</a>
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
 
+    <!-- Mobile Overlay -->
     <div id="mobile-overlay"></div>
+
+    <!-- Footer -->
     <footer>
-
-        <p>© 2026</p>
-
+        <p>© 2026 - made with ❤</p>
     </footer>
 
     <script src="js/script.js"></script>
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </body>
-
 </html>

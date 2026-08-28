@@ -1,486 +1,243 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ----- Reset & Base ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html { scroll-behavior: smooth; }
+body {
+    background: #0D1117;
+    color: white;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-html{
-    scroll-behavior:smooth;
+/* ----- Banner ----- */
+#banner {
+    position: relative;
+    height: 300vh;
+}
+#banner-image {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: url("../assets/banner.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    will-change: background-position;
+}
+#banner-overlay {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.18);
+}
+#welcome-text {
+    font-size: clamp(3rem, 7vw, 6rem);
+    transition: opacity 0.1s;
+}
+#scroll-hint {
+    margin-top: 20px;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    transition: opacity 0.2s;
 }
 
-body{
-
-    background:#0D1117;
-    color:white;
-    overflow-x:hidden;
-    font-family:Segoe UI,sans-serif;
-
-}
-
-/* ---------- HERO BANNER ---------- */
-
-#hero{
-
-    position:relative;
-
-    height:300vh;
-
-}
-
-#hero-image{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:-2;
-
-    background-image:url("../assets/banner.png");
-
-    background-repeat:no-repeat;
-
-    background-position:center top;
-
-    background-size:cover;
-
-    will-change:background-position;
-
-}
-
-#hero-overlay{
-
-    position:sticky;
-
-    top:0;
-
-    height:100vh;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:rgba(0,0,0,.18);
-
-}
-
-#welcome{
-
-    font-size:clamp(3rem,7vw,6rem);
-
-    transition:opacity .1s;
-
-}
-
-#subtitle{
-
-    margin-top:20px;
-
-    font-size:clamp(1rem,2vw,1.4rem);
-
-    transition:opacity .2s;
-
-}
-
-
-
-
-/* ============================= */
-/* MAIN CONTAINER */
-/* ============================= */
-
-#main-container{
-
-    position:relative;
-
-    width:calc(100% - 24px);
-
-    max-width:1800px;
-
-    margin:-120px auto 100px auto;
-
-    padding:0 20px;
-
-    display:grid;
-
-    grid-template-columns:220px 1fr;
-
+/* ----- Main Container ----- */
+#main-container {
+    position: relative;
+    width: calc(100% - 24px);
+    max-width: 1800px;
+    margin: -120px auto 0px auto;
+    padding: 35px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
     gap: 60px;
-
-    background:rgba(15,23,42,.82);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:32px;
-
-    backdrop-filter:blur(18px);
-
-    box-shadow:0 25px 80px rgba(0,0,0,.45);
-
-    padding:35px;
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
 }
 
-/* ============================= */
-/* AVATAR */
-/* ============================= */
-
-#profile-image{
-
-    position:absolute;
-
-    top: -44%;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:240px;
-
-    height:240px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    border:4px solid #6fb7ff;
-
-    box-shadow:0 0 18px rgba(111,183,255,.35);
-
-    z-index:20;
-
-    transition:
-        opacity .25s ease,
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
-
-    
-
+/* ----- Profile Avatar ----- */
+#profile-avatar {
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #6fb7ff;
+    box-shadow: 0 0 18px rgba(111, 183, 255, 0.35);
+    z-index: 20;
+    transition: opacity 0.25s ease, transform 0.25s ease,
+                border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* ============================= */
-/* SIDEBAR */
-/* ============================= */
-
-#sidebar{
-
-    position:sticky;
-
-    top:130px;
-
-    height:max-content;
-
-    background:rgba(15,23,42,.82);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:24px;
-
-    padding:5% 25px 0px;
-
-    backdrop-filter:blur(18px);
-
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
+/* ----- Sidebar ----- */
+#sidebar {
+    position: sticky;
+    top: 130px;
+    height: max-content;
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 5% 25px 0;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
-#sidebar-menu{
-
-    margin-top:105px;
-
+#sidebar-menu {
+    margin-top: 105px;
 }
-#sidebar a{
-
-    display:block;
-
-    color:#ddd;
-
-    text-decoration:none;
-
-    margin-bottom:18px;
-
-    transition:.2s;
-
+#sidebar a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    margin-bottom: 18px;
+    transition: 0.2s;
+}
+#sidebar a:hover {
+    transform: translateX(6px);
 }
 
-#sidebar a:hover{
-
-    transform:translateX(6px);
-
+/* ----- Content Area ----- */
+#content {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 }
 
-/* ============================= */
-/* CONTENT */
-/* ============================= */
-
-#content{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:60px;
-
+/* ----- Cards ----- */
+.card {
+    position: relative;
+    min-height: 300px;
+    padding: 40px 40px 40px 90px;
+    border-radius: 28px;
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    isolation: isolate;
+    overflow: visible; /* Allows avatar to protrude */
 }
 
-/* ============================= */
-/* CARDS */
-/* ============================= */
-.card-wrapper{
-
-    position:relative;
-    z-index:1;
+/* Card image placeholder (protrudes from left) */
+.card-image-placeholder {
+    position: absolute;
+    left: -135px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 300px;
+    z-index: 1;
 }
-.section-card{
-
-    position:relative;
-
-    min-height:300px;
-
-    padding:40px;
-    padding-left:90px;
-    border-radius:28px;
-
-    background:rgba(15,23,42,.82);
-
-    backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    box-shadow:0 20px 60px rgba(0,0,0,.45);
-
-    isolation:isolate;
-    
-    overflow:hidden;
-
+.card-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
-/* ============================= */
-/* IMAGE SLOT */
-/* ============================= */
-
-.card-image-placeholder{
-
-    position:absolute;
-
-    left:-135px;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-    width:300px;
-
-    height:300px;
-
-    z-index:1;
-
-}
-.card-image-placeholder img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:contain;
-
-    display:block;
-
-}
-
-/* ============================= */
-/* PATTERNS */
-/* ============================= */
-
+/* ----- Pattern Backgrounds (now with border-radius) ----- */
 .pattern-about::before,
 .pattern-gaming::before,
 .pattern-social::before,
 .pattern-github::before,
-.pattern-projects::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:1px;
-
-    pointer-events:none;
-
-    background-repeat:repeat;
-
-    background-position:0 0;
-
-    background-size:650px;
-
-    opacity:.5;
-
-    z-index:-1;
-
+.pattern-projects::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-size: 650px;
+    opacity: 0.5;
+    z-index: -1;
+    border-radius: 28px; /* Match card's border-radius */
 }
 
-/* About */
+.pattern-about::before   { background-image: url("../assets/about.png"); }
+.pattern-gaming::before  { background-image: url("../assets/gaming.png"); }
+.pattern-social::before  { background-image: url("../assets/social.png"); }
+.pattern-github::before  { background-image: url("../assets/github.png"); }
+.pattern-projects::before { background-image: url("../assets/projects.png"); }
 
-.pattern-about::before{
-
-    background-image:url("../assets/about.png");
-
+/* ----- Shared Card Image Links (GitHub, Projects, Exophase) ----- */
+.github-card-link,
+.projects-card-link,
+.exophase-card-link {
+    display: block;
+    margin-top: 25px;
+    transition: transform 0.2s ease;
+}
+.github-card-link:hover,
+.projects-card-link:hover,
+.exophase-card-link:hover {
+    transform: scale(1.01);
+}
+.github-card-link img,
+.projects-card-link img,
+.exophase-card-link img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Gaming */
-
-.pattern-gaming::before{
-
-    background-image:url("../assets/gaming.png");
-
+/* ----- Card Link Text (→) ----- */
+.card-link {
+    margin-top: 12px;
+}
+.card-link a {
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+.card-link a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
 }
 
-/* Social */
-
-.pattern-social::before{
-
-    background-image:url("../assets/social.png");
-
+/* ----- Social LinkedIn Button ----- */
+.btn-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #0A66C2;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.btn-linkedin:hover {
+    background: #0957a0;
 }
 
-/* GitHub */
-
-.pattern-github::before{
-
-    background-image:url("../assets/github.png");
-
+/* ----- Headings ----- */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
 }
 
-/* Projects */
-
-.pattern-projects::before{
-
-    background-image:url("../assets/projects.png");
-
+/* ----- Mobile Menu Button (hidden on desktop) ----- */
+#mobile-menu-btn {
+    display: none;
 }
 
-
-.gaming-widgets{
-
-    display:flex;
-
-    gap:20px;
-
-    margin-top:30px;
-
-    align-items:flex-start;
-
-    flex-wrap:wrap;
-
-}
-
-.gaming-widgets a{
-
-    flex:1;
-
-}
-
-.gaming-widgets img{
-
-    display:block;
-
-    width:100%;
-
-    height:auto;
-
-    border-radius:12px;
-
-}
-
-#about-right h2{
-
-    font-size:2.4rem;
-
-    margin-bottom:20px;
-
-}
-
-#about-right p{
-
-    line-height:1.8;
-
-    color:#d6d6d6;
-
-    font-size:1.1rem;
-
-}
-
-h2{
-
-    font-size:2rem;
-
-}
-
-#mobile-menu-btn{
-
-    display:none;
-
-}
-
-@media (max-width:900px){
-
-#profile-image{
-
-    width:240px;
-    height:240px;
-
-}
-
-#profile-container{
-
-    top:-100px;
-
-}
-
-#about{
-
-    padding-top:130px;
-
-}
-
-#about-card{
-
-    padding:35px;
-
-}
-
-}
-
-@media(max-width:900px){
-
-    #main-container{
-
-        grid-template-columns:1fr;
-
-    }
-
-    #sidebar{
-
-        position:relative;
-
-        top:auto;
-
-        padding-top:120px;
-
-    }
-
-    #profile-image{
-
-        left:50%;
-
-        transform:translateX(-50%);
-
-    }
-
-    .card-image-placeholder{
-
-        display:none;
-
-    }
-
+/* ----- Footer ----- */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    color: #888;
+    font-size: 0.9rem;
 }
