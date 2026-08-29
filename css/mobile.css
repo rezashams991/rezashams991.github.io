@@ -1,5 +1,10 @@
+/* =========================================================
+   Mobile Layout (Main & Project Pages)
+   ========================================================= */
+
 @media (max-width: 900px) {
-    /* Disable backdrop blur for performance */
+    
+    /* ----- Global Resets ----- */
     #main-container,
     #sidebar {
         backdrop-filter: none !important;
@@ -24,57 +29,47 @@
         gap: 30px !important;
     }
 
+    /* ----- Main Page Cards ----- */
     .card {
-    width: 100% !important;
-    padding: 30px 20px !important;
-    min-height: auto !important;
-    border-radius: 20px !important;
-}
+        width: 100% !important;
+        padding: 30px 20px !important;
+        min-height: auto !important;
+        border-radius: 20px !important;
+    }
 
-    /* Pattern backgrounds on mobile */
     .pattern-about::before,
     .pattern-gaming::before,
     .pattern-social::before,
     .pattern-github::before,
     .pattern-projects::before {
-        border-radius: 20px !important; /* Match mobile card border-radius */
+        border-radius: 20px !important;
     }
 
-/* ----- Mobile Avatar (inside cards) ----- */
-.card-image-placeholder {
-    display: block !important;
-    position: absolute !important;
-    left: -10px !important;          /* Adjusted to fit better */
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: 70px !important;          /* Smaller for mobile */
-    height: 70px !important;
-    z-index: 10 !important;
-    pointer-events: none !important;
-}
+    /* Mobile Avatar (inside cards) */
+    .card-image-placeholder {
+        display: block !important;
+        position: absolute !important;
+        left: -10px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 70px !important;
+        height: 70px !important;
+        z-index: 10 !important;
+        pointer-events: none !important;
+    }
+    .card-image-placeholder:empty { display: none !important; }
+    .card-image-placeholder img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) !important;
+    }
 
-.card-image-placeholder:empty {
-    display: none !important;
-}
+    /* Card Padding Adjustments */
+    .card:has(.card-image-placeholder:not(:empty)) { padding-left: 65px !important; }
+    .card:has(.card-image-placeholder:empty) { padding-left: 20px !important; }
 
-.card-image-placeholder img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) !important;
-}
-
-/* Cards with avatar (e.g., Gaming) need left padding */
-.card:has(.card-image-placeholder:not(:empty)) {
-    padding-left: 65px !important;   /* Space for avatar */
-}
-
-/* Cards without avatar get normal padding */
-.card:has(.card-image-placeholder:empty) {
-    padding-left: 20px !important;
-}
-
-    /* Profile avatar fixed at top-left */
+    /* ----- Main Page Profile Avatar ----- */
     #profile-avatar {
         position: fixed !important;
         top: 15px !important;
@@ -86,11 +81,11 @@
         margin: 0 !important;
     }
 
-    /* Mobile menu button */
+    /* ----- Mobile Menu Button ----- */
     #mobile-menu-btn {
         display: flex !important;
         position: fixed !important;
-        top: 95px !important;
+        top: 95px !important; /* Below profile avatar on main page */
         left: 15px !important;
         width: 45px !important;
         height: 45px !important;
@@ -105,8 +100,13 @@
         z-index: 1400 !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
     }
+    
+    /* Fix position for Project Page (no avatar present) */
+    body.project-page #mobile-menu-btn {
+        top: 15px !important;
+    }
 
-    /* Sidebar slide-in */
+    /* ----- Shared Sidebar Slide-in ----- */
     #sidebar {
         position: fixed !important;
         top: 0 !important;
@@ -122,9 +122,8 @@
         z-index: 1300 !important;
         box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5) !important;
     }
-    #sidebar.open {
-        left: 0 !important;
-    }
+    #sidebar.open { left: 0 !important; }
+    
     #sidebar-menu {
         margin-top: 0 !important;
         display: flex !important;
@@ -138,7 +137,12 @@
         margin-bottom: 0 !important;
     }
 
-    /* Overlay */
+    /* Adjust padding for Project Page Sidebar (less top space needed) */
+    body.project-page #sidebar {
+        padding: 80px 20px 20px 20px !important; 
+    }
+
+    /* ----- Shared Overlay ----- */
     #mobile-overlay {
         position: fixed !important;
         inset: 0 !important;
@@ -153,10 +157,65 @@
         visibility: visible !important;
     }
 
-    /* Card images max-width 100% on mobile */
+    /* ----- Card Images (Main Page) ----- */
     .github-card-link img,
     .projects-card-link img,
     .exophase-card-link img {
         max-width: 100% !important;
     }
+
+    /* =========================================================
+       Project Page Specific Layout
+       ========================================================= */
+    #project-header {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 25px 20px !important;
+        border-radius: 0 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    #project-header-inner {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 20px !important;
+    }
+    #project-icon-wrapper {
+        width: 130px !important;
+        height: 130px !important;
+        flex-basis: 130px !important;
+        border-radius: 22px !important;
+    }
+    #project-title { font-size: 2rem !important; }
+    #project-description { font-size: 0.95rem !important; }
+
+    #project-container {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin: 20px 0 0 0 !important;
+        padding: 0 15px !important;
+        gap: 20px !important;
+    }
+
+    #markdown-container {
+        padding: 30px 20px !important;
+        border-radius: 20px !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+
+/* ----- Extra Small Screens ----- */
+@media (max-width: 500px) {
+    #project-container { padding: 0 10px !important; }
+    #markdown-container { padding: 25px 16px !important; }
+    #project-icon-wrapper {
+        width: 110px !important;
+        height: 110px !important;
+        flex-basis: 110px !important;
+    }
+    #project-title { font-size: 1.7rem !important; }
+    #github-link { width: 100% !important; }
 }

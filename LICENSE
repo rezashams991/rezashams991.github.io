@@ -1,39 +1,41 @@
-MIT License
 
-Copyright (c) 2026 Reza Shams (rezashams991)
+The MIT License does NOT apply to the following:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of the software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. Assets
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+All images, icons, graphics, and other visual assets contained in the
+"/assets" directory are excluded from the MIT License, including but not
+limited to:
 
----
+* banner.png
+* avatar.png
+* about.png
+* gaming.png
+* social.png
+* github.png
+* projects.png
+* favicon and apple-touch-icon files
+* Any other image, icon, illustration, or graphic contained in the repository
 
-** IMPORTANT EXCEPTION FOR ASSETS & PERSONAL DATA **
+These assets may not be copied, modified, distributed, reproduced, or reused
+without explicit written permission from the copyright owner.
 
-The MIT License applies strictly to the source code files (HTML, CSS, JavaScript)
-contained in this repository. It does NOT apply to the following:
+2. Personal Identity and Profile Information
 
-1. All files located in the "/assets" directory, including but not limited to:
-   - banner.png, avatar.png
-   - about.png, gaming.png, social.png, github.png, projects.png
-   - All favicon and apple-touch-icon files
-   - Any other image, icon, or graphic file
+Personal profile information contained in this repository, including usernames,
+profile links, profile identifiers, and other information associated with
+Reza Shams and third-party platforms such as GitHub, Xbox, Steam, LinkedIn,
+Exophase, and similar services, is not licensed under the MIT License.
 
-2. All personal profile links, usernames, and associated metadata referencing:
-   - GitHub, Xbox, Steam, LinkedIn, Exophase, and any other third-party platforms
+The MIT License does not grant permission to use this information to impersonate
+Reza Shams, represent another person as Reza Shams, or create a derivative
+personal profile based on the owner's identity.
 
-These assets and personal identifiers are the exclusive intellectual property
-of Reza Shams. You may NOT use, copy, modify, distribute, or reproduce them
-for commercial or non-commercial purposes without explicit written permission
-from the owner.
+Use of third-party names, trademarks, logos, or platform-specific assets may
+also be subject to the terms and policies of their respective owners.
 
-For inquiries regarding asset usage, please contact the repository owner.
+For permission to use the excluded assets or personal identity materials,
+please contact the repository owner.
 
 ---
 

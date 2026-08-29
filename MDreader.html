@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+    <!-- Core Styles (Global & Mobile Layout) -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    
+    <!-- Markdown Specific Styles -->
+    <link rel="stylesheet" href="css/project.css">
+
+    <title>Project</title>
+</head>
+
+<!-- 'project-page' class added for specific layout targeting -->
+<body class="project-page">
+
+    <!-- Mobile Menu Button & Overlay -->
+    <button id="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+    <div id="mobile-overlay"></div>
+
+    <!-- Project Header Section -->
+    <header id="project-header">
+        <div id="project-header-inner">
+            
+            <!-- Project Icon -->
+            <div id="project-icon-wrapper">
+                <img id="project-icon" src="" alt="Project Icon">
+            </div>
+
+            <!-- Project Info -->
+            <div id="project-info">
+                <h1 id="project-title">Loading...</h1>
+                <p id="project-description"></p>
+                
+                <div id="project-links">
+                    <a id="github-link" href="#" target="_blank" rel="noopener noreferrer">
+                        View on GitHub →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Project Content -->
+    <main id="project-container">
+
+        <!-- Sidebar / Table of Contents -->
+        <!-- ID changed to 'sidebar' to inherit styles from style.css -->
+        <aside id="sidebar">
+            <a href="index.html" id="back-button">← Back</a>
+            
+            <div id="project-sidebar-inner">
+                <h2>Contents</h2>
+                <nav id="project-toc">
+                    <!-- Headings generated via JS -->
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Markdown Article -->
+        <!-- ID changed to 'content' to inherit layout properties -->
+        <article id="content">
+            <div id="markdown-container">
+                
+                <!-- Loading State -->
+                <div id="markdown-loading">
+                    Loading project documentation...
+                </div>
+
+                <!-- Error State -->
+                <div id="markdown-error" hidden>
+                    <h2>Unable to load documentation</h2>
+                    <p>The project's README could not be loaded.</p>
+                </div>
+
+                <!-- Rendered Markdown Content -->
+                <div id="markdown-content">
+                    <!-- HTML output goes here -->
+                </div>
+
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 - made with ❤</p>
+    </footer>
+
+    <!-- Project Script -->
+    <script src="js/project.js"></script>
+
+</body>
+</html>

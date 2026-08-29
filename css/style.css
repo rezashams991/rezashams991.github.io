@@ -1,22 +1,31 @@
-/* ----- Reset & Base ----- */
+/* =========================================================
+   Global Resets & Base Styles
+   ========================================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html { scroll-behavior: smooth; }
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #0D1117;
     color: white;
     overflow-x: hidden;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ----- Banner ----- */
+/* =========================================================
+   Index Page: Banner Section
+   ========================================================= */
 #banner {
     position: relative;
-    height: 300vh;
+    height: 300vh; /* For scrolling effect */
 }
+
 #banner-image {
     position: fixed;
     inset: 0;
@@ -27,6 +36,7 @@ body {
     background-size: cover;
     will-change: background-position;
 }
+
 #banner-overlay {
     position: sticky;
     top: 0;
@@ -37,17 +47,21 @@ body {
     align-items: center;
     background: rgba(0, 0, 0, 0.18);
 }
+
 #welcome-text {
     font-size: clamp(3rem, 7vw, 6rem);
     transition: opacity 0.1s;
 }
+
 #scroll-hint {
     margin-top: 20px;
     font-size: clamp(1rem, 2vw, 1.4rem);
     transition: opacity 0.2s;
 }
 
-/* ----- Main Container ----- */
+/* =========================================================
+   Index Page: Main Layout
+   ========================================================= */
 #main-container {
     position: relative;
     width: calc(100% - 24px);
@@ -61,10 +75,10 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 32px;
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
 }
 
-/* ----- Profile Avatar ----- */
 #profile-avatar {
     position: absolute;
     top: -40%;
@@ -77,11 +91,12 @@ body {
     border: 4px solid #6fb7ff;
     box-shadow: 0 0 18px rgba(111, 183, 255, 0.35);
     z-index: 20;
-    transition: opacity 0.25s ease, transform 0.25s ease,
-                border-color 0.25s ease, box-shadow 0.25s ease;
+    transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 
-/* ----- Sidebar ----- */
+/* =========================================================
+   Shared Sidebar (Desktop)
+   ========================================================= */
 #sidebar {
     position: sticky;
     top: 130px;
@@ -91,30 +106,40 @@ body {
     border-radius: 24px;
     padding: 5% 25px 0;
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
+
 #sidebar-menu {
     margin-top: 105px;
 }
+
 #sidebar a {
     display: block;
     color: #ddd;
     text-decoration: none;
     margin-bottom: 18px;
-    transition: 0.2s;
+    transition: transform 0.2s;
 }
+
 #sidebar a:hover {
     transform: translateX(6px);
 }
 
-/* ----- Content Area ----- */
+/* =========================================================
+   Index Page: Content & Cards
+   ========================================================= */
 #content {
     display: flex;
     flex-direction: column;
     gap: 60px;
 }
 
-/* ----- Cards ----- */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
 .card {
     position: relative;
     min-height: 300px;
@@ -122,13 +147,14 @@ body {
     border-radius: 28px;
     background: rgba(15, 23, 42, 0.82);
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
     isolation: isolate;
     overflow: visible; /* Allows avatar to protrude */
 }
 
-/* Card image placeholder (protrudes from left) */
+/* Avatar protruding from left side */
 .card-image-placeholder {
     position: absolute;
     left: -135px;
@@ -138,6 +164,7 @@ body {
     height: 300px;
     z-index: 1;
 }
+
 .card-image-placeholder img {
     width: 100%;
     height: 100%;
@@ -145,7 +172,7 @@ body {
     display: block;
 }
 
-/* ----- Pattern Backgrounds (now with border-radius) ----- */
+/* Background Patterns */
 .pattern-about::before,
 .pattern-gaming::before,
 .pattern-social::before,
@@ -160,7 +187,7 @@ body {
     background-size: 650px;
     opacity: 0.5;
     z-index: -1;
-    border-radius: 28px; /* Match card's border-radius */
+    border-radius: 28px;
 }
 
 .pattern-about::before   { background-image: url("../assets/about.png"); }
@@ -169,7 +196,9 @@ body {
 .pattern-github::before  { background-image: url("../assets/github.png"); }
 .pattern-projects::before { background-image: url("../assets/projects.png"); }
 
-/* ----- Shared Card Image Links (GitHub, Projects, Exophase) ----- */
+/* =========================================================
+   Links, Buttons & Footer
+   ========================================================= */
 .github-card-link,
 .projects-card-link,
 .exophase-card-link {
@@ -177,11 +206,13 @@ body {
     margin-top: 25px;
     transition: transform 0.2s ease;
 }
+
 .github-card-link:hover,
 .projects-card-link:hover,
 .exophase-card-link:hover {
     transform: scale(1.01);
 }
+
 .github-card-link img,
 .projects-card-link img,
 .exophase-card-link img {
@@ -191,10 +222,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ----- Card Link Text (→) ----- */
-.card-link {
-    margin-top: 12px;
-}
+.card-link { margin-top: 12px; }
 .card-link a {
     text-decoration: none;
     font-weight: bold;
@@ -205,7 +233,6 @@ body {
     text-decoration: underline;
 }
 
-/* ----- Social LinkedIn Button ----- */
 .btn-linkedin {
     display: inline-flex;
     align-items: center;
@@ -219,25 +246,151 @@ body {
     font-weight: bold;
     transition: background 0.2s;
 }
-.btn-linkedin:hover {
-    background: #0957a0;
-}
+.btn-linkedin:hover { background: #0957a0; }
 
-/* ----- Headings ----- */
-h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-}
+/* Hide mobile button on desktop */
+#mobile-menu-btn { display: none; }
 
-/* ----- Mobile Menu Button (hidden on desktop) ----- */
-#mobile-menu-btn {
-    display: none;
-}
-
-/* ----- Footer ----- */
 footer {
     text-align: center;
-    padding: 30px 0;
+    padding: 10px 0;
     color: #888;
     font-size: 0.9rem;
+}
+
+/* =========================================================
+   Project Page Specific Layout (Desktop)
+   ========================================================= */
+body.project-page {
+    background:
+        linear-gradient(rgba(13, 17, 23, 0.45), rgba(13, 17, 23, 0.65)),
+        url("../assets/banner.png") center top / cover fixed no-repeat;
+    min-height: 100vh;
+}
+
+#project-header {
+    width: calc(100% - 24px); 
+    max-width: 1800px; 
+    margin: 24px auto 0; 
+    padding: 35px;
+    background: rgba(15, 23, 42, 0.82); 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    border-radius: 32px;
+    backdrop-filter: blur(18px); 
+    -webkit-backdrop-filter: blur(18px); 
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+}
+
+#project-header-inner { 
+    display: flex; 
+    align-items: center; 
+    gap: 35px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+#project-icon-wrapper {
+    flex: 0 0 180px; 
+    width: 180px; 
+    height: 180px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    border-radius: 28px; 
+    background: rgba(255, 255, 255, 0.04); 
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35), inset 0 0 30px rgba(255, 255, 255, 0.025); 
+    overflow: hidden;
+}
+
+#project-icon { 
+    width: 85%; 
+    height: 85%; 
+    object-fit: contain; 
+    transition: transform 0.25s ease; 
+}
+#project-icon-wrapper:hover #project-icon { transform: scale(1.05); }
+
+#project-info { min-width: 0; }
+#project-title { 
+    margin: 0 0 12px; 
+    font-size: clamp(2rem, 4vw, 3.2rem); 
+    line-height: 1.15; 
+    word-break: break-word; 
+}
+#project-description { 
+    margin: 0; 
+    max-width: 800px; 
+    color: #b8c0cc; 
+    font-size: 1.05rem; 
+    line-height: 1.7; 
+}
+#project-links { margin-top: 20px; }
+
+#github-link {
+    display: inline-block; 
+    padding: 10px 20px; 
+    border: 1px solid rgba(255, 255, 255, 0.12); 
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05); 
+    color: white; 
+    text-decoration: none; 
+    font-weight: bold;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+#github-link:hover { 
+    background: rgba(255, 255, 255, 0.10); 
+    border-color: rgba(255, 255, 255, 0.22); 
+    transform: translateY(-2px); 
+}
+
+#project-container {
+    position: relative; 
+    width: calc(100% - 24px); 
+    max-width: 1800px; 
+    margin: 24px auto 0;
+    display: grid; 
+    grid-template-columns: 220px minmax(0, 1fr); 
+    gap: 60px; 
+    align-items: start;
+}
+
+/* Override inherited sidebar layout for project page */
+body.project-page #sidebar { 
+    top: 10px; 
+    padding: 25px 20px; 
+}
+
+#back-button {
+    display: inline-flex; 
+    align-items: center; 
+    padding: 8px 14px; 
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10); 
+    border-radius: 8px; 
+    color: #d8dee8; 
+    text-decoration: none;
+    font-size: 0.9rem; 
+    font-weight: 600; 
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+    margin-bottom: 12px; 
+    width: 100%;
+}
+#back-button:hover { 
+    background: rgba(255, 255, 255, 0.12); 
+    border-color: rgba(255, 255, 255, 0.20); 
+    color: white; 
+    transform: translateX(-2px); 
+}
+
+#markdown-container {
+    position: relative; 
+    padding: 45px 50px; 
+    background: rgba(15, 23, 42, 0.82); 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    border-radius: 28px; 
+    backdrop-filter: blur(18px); 
+    -webkit-backdrop-filter: blur(18px); 
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45); 
+    overflow: hidden;
 }
