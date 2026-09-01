@@ -1,4 +1,4 @@
-#Personal Portfolio Website
+Personal Portfolio Website
 
 A modern, responsive personal portfolio website built with vanilla HTML, CSS, and JavaScript. It features a dynamic banner with a parallax effect, profile avatar border transitions based on scroll position, a fully responsive layout with a mobile-friendly navigation menu, **and an integrated Markdown reader** that can display any GitHub repository’s `README.md` (or any Markdown file) in a clean, documentation‑style layout.
 
