@@ -56,7 +56,7 @@ A modern, responsive personal portfolio website built with vanilla HTML, CSS, an
 ## File Structure
 
 ```
-project/
+rezashams991.github.io/
 ├── index.html              # Main portfolio page
 ├── MDreader.html           # Markdown reader / project documentation page
 ├── css/
