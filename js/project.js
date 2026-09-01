@@ -644,31 +644,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.addEventListener('scroll', () => {
-        const headings = document.querySelectorAll('#markdown-content h1, #markdown-content h2, #markdown-content h3');
-        const tocLinks = document.querySelectorAll('#project-toc a');
-        if(headings.length === 0 || tocLinks.length === 0) return;
+    const headings = document.querySelectorAll('#markdown-content h1, #markdown-content h2, #markdown-content h3');
+    const tocLinks = document.querySelectorAll('#project-toc a');
+    if (headings.length === 0 || tocLinks.length === 0) return;
 
-        let currentId = '';
-        headings.forEach(heading => {
-            const rect = heading.getBoundingClientRect();
-            
-            if (rect.top <= 150) {
-                currentId = heading.id;
-            }
-        });
+    let currentId = '';
+    const threshold = 150; // offset from top for active detection
 
-        // defult content
-        if(!currentId && headings.length > 0) currentId = headings[0].id;
+    // Find the last heading that has crossed the threshold
+    headings.forEach(heading => {
+        const rect = heading.getBoundingClientRect();
+        if (rect.top <= threshold) {
+            currentId = heading.id;
+        }
+    });
 
-        tocLinks.forEach(link => {
-            link.classList.remove('toc-active');
-            if (link.getAttribute('href') === '#' + currentId) {
-                link.classList.add('toc-active');
-                
-                // send active content to sidebar
-                const toc = document.getElementById('project-toc');
-                const linkTop = link.offsetTop;
-                toc.scrollTop = linkTop - (toc.clientHeight / 2) + (link.clientHeight / 2);
+    // If we are at the very bottom of the page, force select the last heading
+    const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+    if (isAtBottom && headings.length > 0) {
+        currentId = headings[headings.length - 1].id;
+    }
+
+    // If still no id (e.g., page not scrolled), default to first heading
+    if (!currentId && headings.length > 0) {
+        currentId = headings[0].id;
+    }
+
+    // Update TOC links and scroll to center the active one
+    tocLinks.forEach(link => {
+        link.classList.remove('toc-active');
+        if (link.getAttribute('href') === '#' + currentId) {
+            link.classList.add('toc-active');
+
+            // Center the active link in the TOC container
+            const toc = document.getElementById('project-toc');
+            const tocRect = toc.getBoundingClientRect();
+            const linkRect = link.getBoundingClientRect();
+            const linkScrollPosition = linkRect.top - tocRect.top + toc.scrollTop;
+            const targetScroll = linkScrollPosition - (toc.clientHeight / 2) + (link.clientHeight / 2);
+            toc.scrollTop = targetScroll;
             }
         });
     });
