@@ -12,6 +12,9 @@ const DEFAULT_BRANCH = "main";
 // Allowed repository owners (edit this list)
 const ALLOWED_OWNERS = ['rezashams991'];
 
+// History of loaded Markdown files
+let mdHistory = [];
+
 // ---------------------------------------------------------
 // DOM Elements
 // ---------------------------------------------------------
@@ -26,6 +29,21 @@ const markdownError = document.getElementById("markdown-error");
 const markdownContent = document.getElementById("markdown-content");
 
 const projectToc = document.getElementById("project-toc");
+
+// ---------------------------------------------------------
+// About Repository Description
+// ---------------------------------------------------------
+
+async function fetchRepoDescription(repo) {
+    try {
+        const response = await fetch(`https://api.github.com/repos/${repo}`);
+        if (response.ok) {
+            const data = await response.json();
+            return data.description || "Project documentation and information.";
+        }
+    } catch (err) {}
+    return "Project documentation and information.";
+}
 
 // ---------------------------------------------------------
 // Get Repository From URL
@@ -365,15 +383,11 @@ function showContent() {
 // Update Page Information
 // ---------------------------------------------------------
 
-function updateProjectHeader(repo, markdown) {
+async function updateProjectHeader(repo, markdown) {
     const info = extractProjectInfo(markdown, repo);
     projectTitle.textContent = info.title;
 
-    if (info.description) {
-        projectDescription.textContent = info.description;
-    } else {
-        projectDescription.textContent = "Project documentation and information.";
-    }
+    projectDescription.textContent = await fetchRepoDescription(repo);
 
     const iconURL = getRepositoryIconURL(repo);
     projectIcon.src = iconURL;
@@ -384,6 +398,10 @@ function updateProjectHeader(repo, markdown) {
     };
 
     githubLink.href = getGitHubURL(repo);
+
+    document.querySelectorAll("link[rel*='icon']").forEach(icon => {
+        icon.href = iconURL;
+    });
 }
 
 // ---------------------------------------------------------
@@ -457,35 +475,36 @@ function extractRepoAndPathFromLink(href, currentRepo) {
     return null;
 }
 
-async function loadAndRenderMarkdownFile(repo, filePath) {
+async function loadAndRenderMarkdownFile(repo, filePath, isBack = false) {
     showLoading();
 
     try {
         const markdown = await fetchMarkdownFile(repo, filePath);
-        updateProjectHeader(repo, markdown);
+        
+        await updateProjectHeader(repo, markdown); 
         updateBrowserTitle(repo, filePath);
 
         await renderMarkdown(markdown);
         fixImageURLs(repo);
-        fixLinkURLs(repo); // fix non-MD links to open in new tab
+        fixLinkURLs(repo); 
         generateTableOfContents();
         enableTOCScrolling();
-        setupMDLinks(); // re-apply click handler on new links
+        setupMDLinks(); 
         enableMobileTOC();
 
-        // Update URL to reflect the new file (optional)
+        
+        if (!isBack) {
+            mdHistory.push({ repo: repo, path: filePath });
+        }
+
         const currentUrl = new URL(window.location);
         currentUrl.searchParams.set('repo', repo);
-        // Optionally add a hash or param to indicate file
         window.history.replaceState(null, '', currentUrl);
 
         showContent();
     } catch (error) {
         console.error("Failed to load Markdown file:", error);
-        showError(
-            `Unable to load "${filePath}" from ${repo}. ` +
-            "Make sure the file exists and the repository is public."
-        );
+        showError(`Unable to load "${filePath}" from ${repo}. Make sure the file exists and the repository is public.`);
     }
 }
 
@@ -531,10 +550,8 @@ function setupMDLinks() {
 
 async function initializeProjectPage() {
     showLoading();
-
     const repo = getRepositoryFromURL();
 
-    // Validate URL
     if (!isValidRepository(repo)) {
         showError("No valid GitHub repository was specified.");
         projectTitle.textContent = "Project not found";
@@ -542,7 +559,6 @@ async function initializeProjectPage() {
         return;
     }
 
-    // Check owner allowlist
     if (!isOwnerAllowed(repo)) {
         showError("Access denied. Owner is not allowed.");
         projectTitle.textContent = "Access Denied";
@@ -552,7 +568,8 @@ async function initializeProjectPage() {
 
     try {
         const markdown = await fetchReadme(repo);
-        updateProjectHeader(repo, markdown);
+        
+        await updateProjectHeader(repo, markdown); 
         updateBrowserTitle(repo, 'README.md');
 
         await renderMarkdown(markdown);
@@ -560,18 +577,18 @@ async function initializeProjectPage() {
         fixLinkURLs(repo);
         generateTableOfContents();
         enableTOCScrolling();
-        setupMDLinks(); // Activate internal MD links
+        setupMDLinks(); 
         enableMobileTOC();
 
         showContent();
+
+        // save main page to memory
+        if (mdHistory.length === 0) {
+            mdHistory.push({ repo: repo, path: 'README.md' });
+        }
     } catch (error) {
         console.error("Project page error:", error);
-        showError(
-            "Unable to load this project's README. " +
-            "Please make sure the repository exists, " +
-            "the README.md file is available, and the " +
-            "repository is public."
-        );
+        showError("Unable to load this project's README. Please make sure the repository exists, the README.md file is available, and the repository is public.");
     }
 }
 
@@ -604,4 +621,55 @@ document.addEventListener('DOMContentLoaded', () => {
         menuBtn.addEventListener('click', toggleMobileMenu);
         overlay.addEventListener('click', toggleMobileMenu);
     }
+});
+
+
+// =========================================================
+// smart scroll and back button
+// =========================================================
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. منطق دکمه Back
+    const backButton = document.getElementById("back-button");
+    if (backButton) {
+        backButton.addEventListener("click", (e) => {
+            e.preventDefault(); 
+            if (mdHistory.length > 1) {
+                mdHistory.pop(); 
+                const prev = mdHistory[mdHistory.length - 1]; 
+                loadAndRenderMarkdownFile(prev.repo, prev.path, true); 
+            } else {
+                window.location.href = "index.html"; 
+            }
+        });
+    }
+
+    window.addEventListener('scroll', () => {
+        const headings = document.querySelectorAll('#markdown-content h1, #markdown-content h2, #markdown-content h3');
+        const tocLinks = document.querySelectorAll('#project-toc a');
+        if(headings.length === 0 || tocLinks.length === 0) return;
+
+        let currentId = '';
+        headings.forEach(heading => {
+            const rect = heading.getBoundingClientRect();
+            
+            if (rect.top <= 150) {
+                currentId = heading.id;
+            }
+        });
+
+        // defult content
+        if(!currentId && headings.length > 0) currentId = headings[0].id;
+
+        tocLinks.forEach(link => {
+            link.classList.remove('toc-active');
+            if (link.getAttribute('href') === '#' + currentId) {
+                link.classList.add('toc-active');
+                
+                // send active content to sidebar
+                const toc = document.getElementById('project-toc');
+                const linkTop = link.offsetTop;
+                toc.scrollTop = linkTop - (toc.clientHeight / 2) + (link.clientHeight / 2);
+            }
+        });
+    });
 });

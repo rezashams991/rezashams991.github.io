@@ -357,8 +357,8 @@ body.project-page {
 
 /* Override inherited sidebar layout for project page */
 body.project-page #sidebar { 
-    top: 10px; 
-    padding: 25px 20px; 
+    top: 20px; 
+    padding: 10px 20px 25px; 
 }
 
 #back-button {
