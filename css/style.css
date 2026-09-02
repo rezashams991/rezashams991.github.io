@@ -81,7 +81,7 @@ body {
 
 #profile-avatar {
     position: absolute;
-    top: -40%;
+    top: -36%;
     left: 50%;
     transform: translateX(-50%);
     width: 240px;
@@ -393,4 +393,43 @@ body.project-page #sidebar {
     -webkit-backdrop-filter: blur(18px); 
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45); 
     overflow: hidden;
+}
+
+
+/* =========================================================
+   Tools Page Layout (reuses project-page styles)
+   ========================================================= */
+body.tools-page {
+    background:
+        linear-gradient(rgba(13, 17, 23, 0.45), rgba(13, 17, 23, 0.65)),
+        url("../assets/banner.png") center top / cover fixed no-repeat;
+    min-height: 100vh;
+}
+
+/* Override for tools page: single column, no sidebar */
+body.tools-page #project-container {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+}
+
+/* Back button (shared with MDreader) */
+#back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 8px;
+    color: #d8dee8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+    margin-top: 12px;
+}
+#back-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.20);
+    color: white;
+    transform: translateX(-2px);
 }

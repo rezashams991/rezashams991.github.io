@@ -228,3 +228,55 @@
     #project-title { font-size: 1.7rem !important; }
     #github-link { width: 100% !important; }
 }
+
+/* =========================================================
+   Mobile adjustments for Tools page
+   ========================================================= */
+@media (max-width: 900px) {
+    body.tools-page #project-header {
+        padding: 20px 15px !important;
+    }
+    body.tools-page #project-header-inner {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 15px !important;
+    }
+    body.tools-page #project-icon-wrapper {
+        width: 100px !important;
+        height: 100px !important;
+        flex-basis: 100px !important;
+    }
+    body.tools-page #project-title {
+        font-size: 1.8rem !important;
+    }
+    body.tools-page #project-description {
+        font-size: 0.9rem !important;
+    }
+    #back-button {
+        font-size: 0.8rem !important;
+        padding: 6px 12px !important;
+    }
+    body.tools-page #project-container {
+        padding: 0 10px !important;
+    }
+    .tools-tab {
+        padding: 6px 14px !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (max-width: 500px) {
+    body.tools-page #project-icon-wrapper {
+        width: 80px !important;
+        height: 80px !important;
+        flex-basis: 80px !important;
+    }
+    body.tools-page #project-title {
+        font-size: 1.5rem !important;
+    }
+    #back-button {
+        font-size: 0.75rem !important;
+        padding: 4px 10px !important;
+    }
+}

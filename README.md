@@ -1,6 +1,6 @@
-Personal Portfolio Website
+# Personal Portfolio Website
 
-A modern, responsive personal portfolio website built with vanilla HTML, CSS, and JavaScript. It features a dynamic banner with a parallax effect, profile avatar border transitions based on scroll position, a fully responsive layout with a mobile-friendly navigation menu, **and an integrated Markdown reader** that can display any GitHub repository’s `README.md` (or any Markdown file) in a clean, documentation‑style layout.
+A modern, responsive personal portfolio website built with vanilla HTML, CSS, and JavaScript. It features a dynamic banner with a parallax effect, profile avatar border transitions based on scroll position, a fully responsive layout with a mobile-friendly navigation menu, **an integrated Markdown reader** that can display any GitHub repository's `README.md` in a clean, documentation‑style layout, **and a dedicated Tools page** that hosts client‑side PDF utilities.
 
 ---
 
@@ -13,6 +13,7 @@ A modern, responsive personal portfolio website built with vanilla HTML, CSS, an
 - [Usage](#usage)
   - [Main Website](#main-website)
   - [Markdown Reader (Project Page)](#markdown-reader-project-page)
+  - [Tools Page](#tools-page)
 - [Customization](#customization)
   - [Colors & Border Map](#colors--border-map)
   - [Adding a New Card](#adding-a-new-card)
@@ -25,6 +26,7 @@ A modern, responsive personal portfolio website built with vanilla HTML, CSS, an
   - [Replacing Assets (Images, Icons & Patterns)](#replacing-assets-images-icons--patterns)
   - [Markdown Reader – Repository Allowlist](#markdown-reader--repository-allowlist)
   - [Markdown Reader – Customization](#markdown-reader--customization)
+  - [Tools Page – Integration](#tools-page--integration)
 - [Third-Party Trademarks](#third-party-trademarks)
 - [Credits](#credits)
 - [License](#license)
@@ -34,11 +36,12 @@ A modern, responsive personal portfolio website built with vanilla HTML, CSS, an
 ## Features
 
 - **Parallax Banner** – Fixed background image with smooth vertical parallax and fade‑out overlay text.
-- **Dynamic Profile Border** – The avatar’s border color and glow change automatically as you scroll through different sections.
+- **Dynamic Profile Border** – The avatar's border color and glow change automatically as you scroll through different sections.
 - **Card‑Based Layout** – Glass‑morphism cards with optional protruding visual placeholders (images, widgets, or any HTML).
 - **Fully Responsive** – Optimized for desktop, tablet, and mobile with a collapsible sidebar menu.
 - **Modular & Extensible** – Easily add new cards, visual elements, or sidebar links without modifying core CSS/JS.
-- **Integrated Markdown Reader** – View any GitHub repository’s `README.md` (or any `.md` file) with a table of contents, syntax highlighting, and automatic link fixing. The reader supports internal navigation between Markdown files and respects a configurable owner allowlist for security.
+- **Integrated Markdown Reader** – View any GitHub repository's `README.md` (or any `.md` file) with a table of contents, syntax highlighting, and automatic link fixing. The reader supports internal navigation between Markdown files and respects a configurable owner allowlist for security.
+- **Dedicated Tools Page** – A wrapper page that integrates client‑side PDF utilities from the [991-PDFtools](https://github.com/rezashams991/991-PDFtools) repository. All processing happens entirely in the browser – no data is ever uploaded to a server.
 
 ---
 
@@ -46,10 +49,11 @@ A modern, responsive personal portfolio website built with vanilla HTML, CSS, an
 
 - **HTML5** – Semantic markup.
 - **CSS3** – Flexbox, Grid, glass‑morphism, and responsive media queries.
-- **Vanilla JavaScript** – Scroll animations, border updates, mobile menu toggling, and Markdown rendering.
-- **Marked** – Markdown‑to‑HTML parser.
+- **Vanilla JavaScript** – Scroll animations, border updates, mobile menu toggling, Markdown rendering, and dynamic tool loading.
+- **Marked** – Markdown‑to‑HTML parser (used by the Markdown reader).
 - **DOMPurify** – HTML sanitizer for secure rendering.
-- **External APIs** – Used for dynamic content (e.g., Exophase cards, GitHub profile summaries).
+- **External APIs** – Used for dynamic content (e.g., Exophase cards, GitHub profile summaries, gh-card.dev).
+- **Dynamic Imports** – Used to load PDF tools on demand from the external repository.
 
 ---
 
@@ -58,14 +62,17 @@ A modern, responsive personal portfolio website built with vanilla HTML, CSS, an
 ```
 rezashams991.github.io/
 ├── index.html              # Main portfolio page
+├── tools.html              # Tools page (PDF utilities wrapper)
 ├── MDreader.html           # Markdown reader / project documentation page
 ├── css/
 │   ├── style.css           # Core styles (desktop & shared)
 │   ├── mobile.css          # Mobile‑specific overrides
-│   └── project.css         # Markdown reader specific styles
+│   ├── project.css         # Markdown reader specific styles
+│   └── tools.css           # Tools page and PDF utility styles
 ├── js/
 │   ├── script.js           # Main page functionality (parallax, border, mobile menu)
-│   └── project.js          # Markdown reader logic (fetch, render, TOC, link handling)
+│   ├── project.js          # Markdown reader logic (fetch, render, TOC, link handling)
+│   └── tools.js            # Tools page logic (tab switching, lazy loading)
 ├── assets/
 │   ├── banner.png          # Banner background image
 │   ├── avatar.png          # Icon for the Gaming card placeholder
@@ -103,6 +110,10 @@ cd rezashams991.github.io
 ### Run Locally
 Simply open `index.html` in your browser – no build tools or server required.
 
+> **Note:** For the Tools page to work locally, you need to either:
+> - Have the `991-pdftools` repository as a sibling folder (so `../991-pdftools/src/index.js` is accessible).
+> - Or use the CDN version (the page falls back to CDN if the local import fails).
+
 ### Deploy to GitHub Pages (Optional)
 1. Push the repository to GitHub.
 2. Go to **Settings > Pages**.
@@ -116,7 +127,7 @@ Simply open `index.html` in your browser – no build tools or server required.
 ### Main Website
 
 - **Scroll** – The banner text fades out and the background image shifts vertically.
-- As you scroll through each card section, the **profile avatar’s border color** updates to match the active section (e.g., blue for About, green for Gaming, etc.).
+- As you scroll through each card section, the **profile avatar's border color** updates to match the active section (e.g., blue for About, green for Gaming, etc.).
 - Click any **sidebar link** to smoothly navigate to the corresponding section.
 - Hover over card images to see a subtle scale effect.
 
@@ -133,7 +144,7 @@ Example:
 `https://rezashams991.github.io/MDreader.html?repo=rezashams991/OpenAppointments`
 
 **What it does:**
-- Fetches the `README.md` from the specified repository’s default branch (usually `main`).
+- Fetches the `README.md` from the specified repository's default branch (usually `main`).
 - Extracts the project title (from the first `#` heading) and a short description.
 - Displays the project icon (`icon.png` from the repository root, falling back to an OpenGraph image).
 - Renders the full Markdown content with:
@@ -143,6 +154,35 @@ Example:
 - Respects a configurable **owner allowlist** – by default only repositories owned by `rezashams991` can be viewed (see [Customization](#markdown-reader--repository-allowlist)).
 
 On mobile, the Table of Contents collapses into a slide‑in menu accessible via a hamburger button (☰) at the top‑left.
+
+### Tools Page
+
+The Tools page (`tools.html`) serves as a **wrapper** for client‑side PDF utilities from the [991-PDFtools](https://github.com/rezashams991/991-PDFtools).
+
+**Access:**
+- Click the **Tools** link in the sidebar of the main page.
+
+**Features:**
+- **Tabbed Interface** – Currently supports PDF Tools (Image Tools coming soon).
+- **Tool Selection** – Click any tool button (Merge, Split, Compress, etc.) to load it.
+- **On‑Demand Loading** – Tools are imported dynamically only when selected, keeping the page lightweight.
+- **Privacy‑First** – All processing happens in the browser. No files are ever uploaded to any server.
+
+**Available Tools (via [991-PDFtools](https://github.com/rezashams991/991-PDFtools)):**
+| Tool | Description |
+|------|-------------|
+| Merge | Combine multiple PDF files into one. |
+| Split | Split a PDF into multiple files by page ranges, every N pages, or odd/even pages. |
+| Extract Pages | Extract specific pages (e.g., `1,3,5-7`) from a PDF. |
+| PDF to Image | Convert each page to a JPG or PNG image. |
+| Image to PDF | Convert multiple images into a single PDF (one image per page). |
+| Watermark | Add text or image watermark to all pages (custom opacity, rotation, position). |
+| Page Number | Add page numbers with custom format, position, and style. |
+| Encrypt | Password-protect a PDF with user/owner permissions. |
+| Decrypt | Remove password protection (requires the correct password). |
+| Compress | Reduce PDF file size by compressing embedded images. |
+
+> **Note:** The Tools page is designed to be a clean, minimal wrapper. All tool logic resides in the separate `991-PDFtools` repository, which is MIT‑licensed and can be used independently.
 
 ---
 
@@ -162,7 +202,7 @@ const borderMap = {
 };
 ```
 
-To change a color, replace the hex value. The avatar’s border and glow will update automatically.
+To change a color, replace the hex value. The avatar's border and glow will update automatically.
 
 ---
 
@@ -204,8 +244,9 @@ You can replace the `<img>` with any HTML (e.g., a widget, a button, an icon, or
 ### Sidebar Links
 
 - Located in `<nav id="sidebar-menu">` inside `index.html`.
-- Each `<a>` tag’s `href` must match the card’s `id` (e.g., `href="#about-card"`).
+- Each `<a>` tag's `href` must match the card's `id` (e.g., `href="#about-card"`).
 - To reorder or rename links, simply edit this list.
+- To link to external pages (like `tools.html`), use a full path: `href="tools.html"`.
 
 ---
 
@@ -283,7 +324,7 @@ Then in HTML:
 </a>
 ```
 
-If you don’t have an SVG icon, you can use an emoji or plain text.
+If you don't have an SVG icon, you can use an emoji or plain text.
 
 ---
 
@@ -320,7 +361,7 @@ const ALLOWED_OWNERS = ['rezashams991'];
 4. Save the file. The reader will now only accept repositories owned by these users.
 
 **Behaviour when a repository owner is not allowed:**
-- The page displays an “Access Denied” error message.
+- The page displays an "Access Denied" error message.
 - No Markdown content is fetched or rendered.
 
 ---
@@ -350,6 +391,12 @@ To disable this feature, comment out the `setupMDLinks()` call in the `initializ
 
 ---
 
+### Tools Page – Integration
+
+The Tools page (`tools.html`) is designed to work with the [991-PDFtools](https://github.com/rezashams991/991-PDFtools). The integration is handled through dynamic imports in `js/tools.js`.
+
+---
+
 ## Third-Party Trademarks
 
 This project includes links and references to external platforms and services, including but not limited to:
@@ -372,6 +419,7 @@ All trademarks, service marks, and logos displayed in this project remain the pr
 - **LinkedIn SVG Icon** – Official LinkedIn brand icon.
 - **Marked** – Markdown parser used by the reader.
 - **DOMPurify** – HTML sanitizer used for secure rendering.
+- **pdf-lib** & **PDF.js** – Used by the [991-PDFtools](https://github.com/rezashams991/991-PDFtools) for PDF processing.
 
 ---
 

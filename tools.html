@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/rezashams991/991-PDFtools/refs/heads/main/icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/rezashams991/991-PDFtools/refs/heads/main/icon.png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/rezashams991/991-PDFtools/refs/heads/main/icon.png">
+    
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    
+    <!-- Tools Specific Styles (only tool-related) -->
+    <link rel="stylesheet" href="css/tools.css">
+    
+    <title>991-PDFTools</title>
+</head>
+
+<body class="tools-page">
+
+    <!-- Hidden mobile menu (to keep compatibility but not visible) -->
+    <button id="mobile-menu-btn" aria-label="Toggle Menu" style="display:none;">☰</button>
+    <div id="mobile-overlay" style="display:none;"></div>
+
+    <!-- ===== Tools Header (same as MDreader) ===== -->
+    <header id="project-header">
+        <div id="project-header-inner">
+            <!-- Icon from 991-pdftools/icon.png -->
+            <div id="project-icon-wrapper">
+                <img id="project-icon" src="https://raw.githubusercontent.com/rezashams991/991-PDFtools/refs/heads/main/icon.png" alt="PDF Tools Icon">
+            </div>
+
+            <!-- Info -->
+            <div id="project-info">
+                <h1 id="project-title">PDF Tools</h1>
+                <p id="project-description">
+                    Client‑side utilities that run entirely in your browser.<br>
+                    No file uploads, no servers – your data stays private.
+                </p>
+                <!-- Back button -->
+                <div id="project-links">
+                    <a href="index.html" id="back-button">← Back</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Main Container ===== -->
+    <main id="project-container" style="grid-template-columns: 1fr; gap:0;">
+
+        <!-- Tabs -->
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px; padding:0 4px;">
+            <button class="tools-tab active" data-tab="pdf">📄 PDF Tools</button>
+            <button class="tools-tab" data-tab="image" disabled>🖼️ Image Tools <span style="font-size:0.7rem; opacity:0.5;">(soon)</span></button>
+        </div>
+
+        <!-- Tool Panels -->
+        <div id="tools-content">
+            <!-- PDF Panel -->
+            <div id="panel-pdf" class="tool-panel active">
+                <div id="pdf-tool-container" class="card" style="padding:25px 30px; min-height:280px; overflow:visible;">
+                    <p style="color:#9da6b3; text-align:center; padding:30px 0;">Select a tool from the list below.</p>
+                </div>
+            </div>
+            <!-- Image Panel (placeholder) -->
+            <div id="panel-image" class="tool-panel">
+                <div class="card" style="padding:40px 30px; text-align:center; color:#9da6b3;">
+                    <p style="font-size:1.3rem; margin-bottom:10px;">🖼️ Image Tools</p>
+                    <p>Image processing tools are under development.<br>They will be available soon.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <p>© 2026 - made with ❤</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/tools.js"></script>
+</body>
+</html>
